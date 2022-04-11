@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-    [SerializeField] private float speed;
+    [SerializeField]
+    private float speed;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    void Start() { }
 
     // Update is called once per frame
     void Update()
@@ -21,9 +18,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
+        if (other.CompareTag("Ball"))
+        {
+            other.gameObject.SetActive(false);
+        }
     }
-    
+
     private void Move()
     {
         float x = Input.GetAxis("Horizontal");
